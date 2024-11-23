@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://media/image/spike/spike.png" type="Texture" id=2]
+[ext_resource path="res://src/actor/Spike.gd" type="Script" id=4]
+[ext_resource path="res://src/shader/offset_y.gdshader" type="Shader" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprites/Left:material:shader_param/offset_y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.2, -0.3, 0, 0.3, 0, 0.345, -0.3, 0, 0.3, 0, 0.2, -0.3, 0, 0.3, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sprites/Right:material:shader_param/offset_y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.345, -0.3, 0, 0.3, 0, 0.2, -0.3, 0, 0.3, 0, 0.345, -0.3, 0, 0.3, 0 ),
+"times": PoolRealArray( 0.00999999, 0.5, 1.01 )
+}
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 5 )
+shader_param/offset_y = 0.2
+shader_param/add_color = Color( 0.7, 0.7, 0.7, 1 )
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 5 )
+shader_param/offset_y = 0.345
+shader_param/add_color = Color( 0.7, 0.7, 0.7, 1 )
+
+[node name="Spike" type="Node2D" groups=["spike"]]
+script = ExtResource( 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+playback_speed = 0.7
+anims/Idle = SubResource( 1 )
+
+[node name="Sprites" type="Node2D" parent="."]
+position = Vector2( -50, -50 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Left" type="Sprite" parent="Sprites"]
+material = SubResource( 2 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Right" type="Sprite" parent="Sprites"]
+material = SubResource( 3 )
+position = Vector2( 200, 0 )
+texture = ExtResource( 2 )
+centered = false

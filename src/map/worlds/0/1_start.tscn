@@ -1,0 +1,277 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/detail/Bench.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/stage/SolidTileMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/stage/SpikeMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/detail/Lamppost.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/detail/Flower.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/detail/Tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/detail/Candle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/actor/door/DoorBig.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/actor/Mirror.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/detail/RockCircle.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/actor/Player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/actor/ChatTree.gd" type="Script" id=12]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SolidTileMap" parent="." instance=ExtResource( 2 )]
+tile_data = PoolIntArray( 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0 )
+detail = 4
+
+[node name="SpikeMap" parent="." instance=ExtResource( 3 )]
+
+[node name="Actors" type="Node2D" parent="."]
+
+[node name="Door" parent="Actors" instance=ExtResource( 8 )]
+position = Vector2( 500, 100 )
+scene_path = "res://src/map/worlds/1/0_hub.tscn"
+
+[node name="Mirror" parent="Actors" instance=ExtResource( 9 )]
+position = Vector2( 500, 702 )
+rotation = 3.14159
+dir = 2
+door_path = NodePath("../Door")
+
+[node name="NPC" parent="Actors" instance=ExtResource( 11 )]
+position = Vector2( 150, 290 )
+__meta__ = {
+"_editor_description_": ""
+}
+dir = 3
+idle_anim = "bench"
+dye = {
+"eye": 11,
+"fit": 2,
+"hair": 0,
+"skin": 3
+}
+hairstyle_back = 0
+hairstyle_front = 3
+is_npc = true
+lines = [ "Wake up sleepyhead!", "You've been out for a while!", "Welcome to ROTA... (:", "How do you look? Turn around!", "Gaze into the mirror...", "Can you feel the breeze?", "Let your eyes drift into the sky...", "I see all in the clouds..." ]
+greeting = 0
+queue_write = "1,2"
+
+[node name="Chat" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "\"1/0_hub\" in maps_visited"
+erase = "0,1,2"
+is_lines = 3
+lines = [ "How was it out there? (:", "So many worlds to explore!" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1"
+
+[node name="Chat2" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "gem_count > 0 and gem_count < 5"
+erase = "0"
+is_lines = 3
+lines = [ "You've got a shine about you!", "Have you found a gem? (;" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1"
+
+[node name="Chat3" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "gem_count > 4 and !(\"2/0_hub\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "You are glowing! ^.^", "You've become quite the collector! (;", "That's enough gems to fit a socket!" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2"
+
+[node name="Chat4" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "\"2/0_hub\" in maps_visited and !(\"3/0_hub\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "How was your walk into town? (:", "Send my best to Candle Randall <3" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1"
+
+[node name="Chat5" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "\"3/0_hub\" in maps_visited and !(\"2A/0_hub\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "You've got a tan! (;", "Tell me all about the desert! ^.^", "I bet the cacti are lovely..." ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2"
+
+[node name="Chat6" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "\"2A/0_hub\" in maps_visited and !(\"3A/0_hub\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "I smell the pine trees on you!", "How was the snow?", "I hope you wore a jacket!", "Watch out for snowballs.. ;P" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2,3"
+
+[node name="Chat7" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "\"3A/0_hub\" in maps_visited and !(\"2B/0_hub\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "You restored the link between grasslands!", "Thank you for uniting the people <3", "The worlds are coming closer together..." ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2"
+
+[node name="Chat8" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "\"2B/0_hub\" in maps_visited and !(\"3B/0_hub\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "The townsfolk are happily reunited! <3", "Are you responsible for this? (-;", "A flame rekindled..." ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2"
+
+[node name="Chat9" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "\"3B/0_hub\" in maps_visited and !(\"2C/0_hub\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "I see visions of a tribe at peace! (:", "A link between worlds is restored...", "Harmony fills the desert! <3" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2"
+
+[node name="Chat10" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "gem_count < 45 and \"2C/0_hub\" in maps_visited and !(\"0/2_end\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "You came all the way back here to see me? (;", "I hope the frost has been treating you well..", "You've brought a lot of warmth to a cold place! <3" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2"
+
+[node name="Chat11" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = " gem_count > 44 and !(\"0/2_end\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "There's no stopping you! ^.^", "Look at how far you've come (;", "Quite the collection you have...", "My friend is excited to meet you!" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2,3"
+
+[node name="Chat12" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "gem_count > 49 and !(\"0/2_end\" in maps_visited)"
+erase = "0"
+is_lines = 3
+lines = [ "What are you doing here!?!", "Look at all these gems! 0=", "A frosted door waits for you...", "You will be in good company (;" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2,3"
+
+[node name="Chat13" type="Node" parent="Actors/NPC"]
+script = ExtResource( 12 )
+expression_string = "\"0/2_end\" in maps_visited"
+erase = "0"
+is_lines = 3
+lines = [ "I see you've met my friend!", "The worlds of ROTA are reunited! (:", "You have my eternal thanks.. <3", "Where are you off to next puzzler?", "For every gem, there is a clock.. (;" ]
+is_greeting = true
+greeting = 0
+is_queue = true
+queue_write = "1,2,3,4"
+
+[node name="Details" type="Node2D" parent="."]
+
+[node name="Rocks" type="Node2D" parent="Details"]
+modulate = Color( 0.97, 0.97, 0.97, 1 )
+
+[node name="Circle" parent="Details/Rocks" instance=ExtResource( 10 )]
+position = Vector2( 500, 400 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Circle2" parent="Details/Rocks" instance=ExtResource( 10 )]
+position = Vector2( 650, 500 )
+scale = Vector2( 0.261665, 0.261665 )
+
+[node name="Circle3" parent="Details/Rocks" instance=ExtResource( 10 )]
+position = Vector2( 350, 300 )
+scale = Vector2( 0.261665, 0.261665 )
+
+[node name="Tree" parent="Details" instance=ExtResource( 6 )]
+position = Vector2( 335, 200 )
+rotation = -0.261799
+scale = Vector2( -1, 1 )
+palette = 3
+
+[node name="Tree2" parent="Details" instance=ExtResource( 6 )]
+position = Vector2( 665, 200 )
+rotation = 0.261799
+
+[node name="Tree4" parent="Details" instance=ExtResource( 6 )]
+position = Vector2( 800, 500 )
+rotation = 1.91986
+palette = 5
+
+[node name="Tree3" parent="Details" instance=ExtResource( 6 )]
+position = Vector2( 200, 500 )
+rotation = -1.91986
+scale = Vector2( -1, 1 )
+palette = 2
+
+[node name="Flower" parent="Details" instance=ExtResource( 5 )]
+position = Vector2( 750, 600 )
+rotation = -3.14159
+palette = 2
+
+[node name="Flower4" parent="Details" instance=ExtResource( 5 )]
+position = Vector2( 250, 600 )
+rotation = -3.14159
+palette = 5
+
+[node name="Flower3" parent="Details" instance=ExtResource( 5 )]
+position = Vector2( 800, 300 )
+rotation = -4.71238
+
+[node name="Flower2" parent="Details" instance=ExtResource( 5 )]
+position = Vector2( 250, 200 )
+palette = 3
+
+[node name="Flower5" parent="Details" instance=ExtResource( 5 )]
+position = Vector2( 750, 200 )
+palette = 4
+
+[node name="Lamppost" parent="Details" instance=ExtResource( 4 )]
+position = Vector2( 800, 400 )
+rotation = 1.57079
+
+[node name="Lamppost2" parent="Details" instance=ExtResource( 4 )]
+position = Vector2( 200, 400 )
+rotation = -1.57079
+
+[node name="Bench" parent="Details" instance=ExtResource( 1 )]
+position = Vector2( 142, 300 )
+rotation = -1.57079
+
+[node name="Candle" parent="Details" instance=ExtResource( 7 )]
+position = Vector2( 650, 600 )
+rotation = -3.14159
+
+[node name="Candle2" parent="Details" instance=ExtResource( 7 )]
+position = Vector2( 350, 600 )
+rotation = -3.14159

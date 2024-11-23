@@ -1,0 +1,327 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://src/detail/Saguaro.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/detail/BarrelCacti.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/actor/door/DoorBig.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/stage/SpikeMap.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/stage/SolidTileMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/detail/Rocks.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/detail/FlowerPetals.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/detail/PineTree.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/detail/Lamppost.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/detail/Bench.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/detail/Snowman.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/detail/Flower.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/detail/Tree.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/detail/TreeTop.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/detail/Candle.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/detail/Fence.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/detail/RockSquare.tscn" type="PackedScene" id=17]
+[ext_resource path="res://src/detail/RockCircle.tscn" type="PackedScene" id=18]
+[ext_resource path="res://src/actor/Player.tscn" type="PackedScene" id=19]
+
+[node name="Map" type="Node2D"]
+
+[node name="SolidTileMap4" parent="." instance=ExtResource( 5 )]
+detail = 4
+bg_palette = 1
+
+[node name="SolidTileMap0" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 917532, 1610612736, 0, 917533, 1610612736, 0, 917534, 1610612736, 0, 917535, 1610612736, 0, 917536, 1610612736, 0, 983068, 1610612736, 0, 983069, 1610612736, 0, 983070, 1610612736, 0, 983071, 1610612736, 0, 983072, 1610612736, 0 )
+
+[node name="SolidTileMap1" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 1048611, 1610612736, 0, 1048612, 1610612736, 0, 1114147, 1610612736, 0, 1114148, 1610612736, 0, 1179683, 1610612736, 0, 1179684, 1610612736, 0, 1245219, 1610612736, 0, 1245220, 1610612736, 0, 1310755, 1610612736, 0, 1310756, 1610612736, 0 )
+detail = 1
+
+[node name="SolidTileMap2" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 1179674, 1610612736, 0, 1179675, 1610612736, 0, 1245210, 1610612736, 0, 1245211, 1610612736, 0, 1310746, 1610612736, 0, 1310747, 1610612736, 0, 1376282, 1610612736, 0, 1376283, 1610612736, 0, 1441818, 1610612736, 0, 1441819, 1610612736, 0 )
+detail = 2
+
+[node name="SolidTileMap3" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 1507358, 1610612736, 0, 1507359, 1610612736, 0, 1507360, 1610612736, 0, 1507361, 1610612736, 0, 1507362, 1610612736, 0, 1572894, 1610612736, 0, 1572895, 1610612736, 0, 1572896, 1610612736, 0, 1572897, 1610612736, 0, 1572898, 1610612736, 0 )
+detail = 3
+
+[node name="SpikeMap" parent="." instance=ExtResource( 4 )]
+
+[node name="Actors" type="Node2D" parent="."]
+
+[node name="D1" parent="Actors" instance=ExtResource( 3 )]
+position = Vector2( 3050, 1300 )
+scene_path = "res://src/map/worlds/1/0_hub.tscn"
+
+[node name="D2" parent="Actors" instance=ExtResource( 3 )]
+position = Vector2( 3800, 1850 )
+rotation = 1.5708
+dir = 1
+scene_path = "res://src/map/worlds/2/0_hub.tscn"
+gem_count = 5
+
+[node name="D3" parent="Actors" instance=ExtResource( 3 )]
+position = Vector2( 3250, 2600 )
+rotation = 3.14159
+dir = 2
+scene_path = "res://src/map/worlds/3/0_hub.tscn"
+gem_count = 10
+
+[node name="D4" parent="Actors" instance=ExtResource( 3 )]
+position = Vector2( 2500, 2050 )
+rotation = 4.71239
+dir = 3
+scene_path = "res://src/map/worlds/2A/0_hub.tscn"
+gem_count = 15
+
+[node name="NPC" parent="Actors" instance=ExtResource( 19 )]
+position = Vector2( 3440, 2250 )
+__meta__ = {
+"_editor_description_": ""
+}
+idle_anim = "idle2"
+dye = {
+"eye": 0,
+"fit": 13,
+"hair": 5,
+"skin": 6
+}
+hairstyle_back = 3
+hairstyle_front = 2
+is_npc = true
+lines = [ "Hello! Who are you?", "Where am I?", "What happened last night?...", "I'm looking for my keys..", "Do you have any snacks?", "Who am we?", "You look familiar...", "This might take a while!", "What is \"who\" ?", "Hmm...", "Hhhhmmmmm....." ]
+greeting = 0
+
+[node name="NPC2" parent="Actors" instance=ExtResource( 19 )]
+position = Vector2( 3450, 1765 )
+__meta__ = {
+"_editor_description_": ""
+}
+dir = 3
+idle_anim = "bench"
+dye = {
+"eye": 18,
+"fit": 15,
+"hair": 12,
+"skin": 5
+}
+hairstyle_back = 2
+hairstyle_front = 7
+is_npc = true
+lines = [ "Good to see you!", "Another lovely day...", "Call me Melody!", "I've seen plenty folks pass through here...", "Welcome to The Crossroads (:", "The starlight shines bright!", "Praise the stars!", "The world keeps on turning...", "Mhmm... beautiful! <3" ]
+greeting = 0
+queue_write = "1"
+
+[node name="NPC3" parent="Actors" instance=ExtResource( 19 )]
+position = Vector2( 2700, 1750 )
+__meta__ = {
+"_editor_description_": ""
+}
+idle_anim = "snowball"
+dye = {
+"eye": 3,
+"fit": 10,
+"hair": 13,
+"skin": 0
+}
+hairstyle_back = 0
+hairstyle_front = 8
+hat = 3
+is_npc = true
+lines = [ "Hey dude ^.^", "Look out!", "Think fast! (;", "Wahoo!", "Yippee!!", "Target practice ;P", "Check THIS out... (;", "Coming in hot!!!", "Coming in cold?...", "Throw one with me!", "Whatcha up tooo?", "Have you seen Robbi?" ]
+greeting = 0
+
+[node name="Details" type="Node2D" parent="."]
+
+[node name="Circle" parent="Details" instance=ExtResource( 18 )]
+position = Vector2( 2700, 2050 )
+scale = Vector2( 0.230745, 0.230745 )
+
+[node name="Rocks" type="Node2D" parent="Details"]
+modulate = Color( 0.858824, 0.847059, 0.835294, 1 )
+
+[node name="Square" parent="Details/Rocks" instance=ExtResource( 17 )]
+position = Vector2( 3050, 1500 )
+rotation = -1.57079
+scale = Vector2( 0.211426, 0.211426 )
+
+[node name="Rocks" parent="Details/Rocks" instance=ExtResource( 6 )]
+position = Vector2( 3250, 2400 )
+rotation = -3.14159
+scale = Vector2( 0.267496, 0.267496 )
+
+[node name="Circle" parent="Details/Rocks" instance=ExtResource( 18 )]
+position = Vector2( 3600, 1850 )
+scale = Vector2( 0.23574, 0.23574 )
+
+[node name="Cacti" type="Node2D" parent="Details"]
+
+[node name="Saguaro" parent="Details/Cacti" instance=ExtResource( 1 )]
+position = Vector2( 3100, 2500 )
+rotation = 0.130868
+scale = Vector2( 0.4, -0.4 )
+
+[node name="Saguaro2" parent="Details/Cacti" instance=ExtResource( 1 )]
+position = Vector2( 3400, 2500 )
+rotation = 3.01069
+z_index = -15
+
+[node name="Saguaro3" parent="Details/Cacti" instance=ExtResource( 1 )]
+position = Vector2( 3250, 2300 )
+rotation = -0.304029
+scale = Vector2( 0.3, 0.3 )
+
+[node name="BarrelCacti" parent="Details/Cacti" instance=ExtResource( 2 )]
+position = Vector2( 3550, 2400 )
+rotation = 1.57079
+
+[node name="BarrelCacti2" parent="Details/Cacti" instance=ExtResource( 2 )]
+position = Vector2( 3350, 2250 )
+palette = 5
+
+[node name="BarrelCacti3" parent="Details/Cacti" instance=ExtResource( 2 )]
+position = Vector2( 3100, 2250 )
+palette = 4
+
+[node name="BarrelCacti4" parent="Details/Cacti" instance=ExtResource( 2 )]
+position = Vector2( 2950, 2400 )
+rotation = -1.57079
+palette = 2
+
+[node name="Snow" type="Node2D" parent="Details"]
+
+[node name="PineTree" parent="Details/Snow" instance=ExtResource( 8 )]
+position = Vector2( 2600, 2200 )
+rotation = -1.83971
+z_index = -5
+
+[node name="PineTree2" parent="Details/Snow" instance=ExtResource( 8 )]
+position = Vector2( 2600, 1900 )
+rotation = -1.30202
+
+[node name="Snowman" parent="Details/Snow" instance=ExtResource( 11 )]
+position = Vector2( 2800, 1950 )
+rotation = 1.57079
+scale = Vector2( -0.3, 0.3 )
+
+[node name="Lamppost" parent="Details/Snow" instance=ExtResource( 9 )]
+position = Vector2( 2800, 2050 )
+rotation = 1.57079
+
+[node name="Bench" parent="Details/Snow" instance=ExtResource( 10 )]
+position = Vector2( 2850, 2150 )
+rotation = 1.57079
+
+[node name="Flower" parent="Details/Snow" instance=ExtResource( 12 )]
+position = Vector2( 2610, 1810 )
+rotation = -0.785397
+palette = 4
+
+[node name="Flower3" parent="Details/Snow" instance=ExtResource( 12 )]
+position = Vector2( 2700, 2300 )
+rotation = 3.14159
+
+[node name="Flower2" parent="Details/Snow" instance=ExtResource( 12 )]
+position = Vector2( 2790, 1810 )
+rotation = 0.785397
+palette = 2
+
+[node name="Grass" type="Node2D" parent="Details"]
+
+[node name="Tree" parent="Details/Grass" instance=ExtResource( 13 )]
+position = Vector2( 2875, 1400 )
+rotation = 0.174533
+z_index = -5
+palette = 5
+
+[node name="Tree3" parent="Details/Grass" instance=ExtResource( 13 )]
+position = Vector2( 3150, 1600 )
+rotation = 2.98235
+scale = Vector2( -1, 1 )
+z_index = -5
+
+[node name="Tree2" parent="Details/Grass" instance=ExtResource( 13 )]
+position = Vector2( 3225, 1400 )
+rotation = -0.174533
+scale = Vector2( -1, 1 )
+palette = 3
+
+[node name="TreeTop" parent="Details/Grass" instance=ExtResource( 14 )]
+position = Vector2( 2850, 1550 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="TreeTop2" parent="Details/Grass" instance=ExtResource( 14 )]
+position = Vector2( 3250, 1450 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="Flower5" parent="Details/Grass" instance=ExtResource( 12 )]
+position = Vector2( 3295, 1595 )
+rotation = -3.92699
+palette = 4
+
+[node name="Flower6" parent="Details/Grass" instance=ExtResource( 12 )]
+position = Vector2( 2805, 1405 )
+rotation = -0.785398
+palette = 2
+
+[node name="Candle" parent="Details/Grass" instance=ExtResource( 15 )]
+position = Vector2( 3050, 1600 )
+rotation = 3.14159
+
+[node name="FlowerPetals" parent="Details/Grass" instance=ExtResource( 7 )]
+position = Vector2( 2750, 1550 )
+
+[node name="FlowerPetals2" parent="Details/Grass" instance=ExtResource( 7 )]
+position = Vector2( 2850, 1650 )
+palette = 5
+
+[node name="FlowerPetals3" parent="Details/Grass" instance=ExtResource( 7 )]
+position = Vector2( 3350, 1450 )
+palette = 3
+
+[node name="Bricks" type="Node2D" parent="Details"]
+
+[node name="Lamppost" parent="Details/Bricks" instance=ExtResource( 9 )]
+position = Vector2( 3675, 1625 )
+rotation = 0.785397
+
+[node name="Lamppost2" parent="Details/Bricks" instance=ExtResource( 9 )]
+position = Vector2( 3675, 2075 )
+rotation = 2.35619
+z_index = -5
+
+[node name="Flower" parent="Details/Bricks" instance=ExtResource( 12 )]
+position = Vector2( 3700, 1700 )
+rotation = 1.57079
+
+[node name="Bench" parent="Details/Bricks" instance=ExtResource( 10 )]
+position = Vector2( 3450, 1775 )
+rotation = -1.57079
+
+[node name="Fence" parent="Details/Bricks" instance=ExtResource( 16 )]
+position = Vector2( 3500, 2000 )
+rotation = -1.57079
+
+[node name="Tree" parent="Details/Bricks" instance=ExtResource( 13 )]
+position = Vector2( 3500, 2000 )
+rotation = -1.61171
+palette = 3
+
+[node name="Candle" parent="Details/Bricks" instance=ExtResource( 15 )]
+position = Vector2( 3500, 1900 )
+rotation = -1.57079
+
+[node name="TreeTop" parent="Details/Bricks" instance=ExtResource( 14 )]
+position = Vector2( 3550, 1650 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="TreeTop2" parent="Details/Bricks" instance=ExtResource( 14 )]
+position = Vector2( 3650, 2050 )
+scale = Vector2( 0.671666, 0.671666 )
+z_index = -9
+
+[node name="FlowerPetals" parent="Details/Bricks" instance=ExtResource( 7 )]
+position = Vector2( 3750, 2050 )
+z_index = -4
+palette = 2
+
+[node name="FlowerPetals2" parent="Details/Bricks" instance=ExtResource( 7 )]
+position = Vector2( 3650, 2150 )
+z_index = -4
+palette = 5

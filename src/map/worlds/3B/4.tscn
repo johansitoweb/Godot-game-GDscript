@@ -1,0 +1,161 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/actor/Box.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/detail/Rocks.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/actor/door/DoorLittle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/actor/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/stage/SolidTileMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/stage/SpikeMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/detail/RockCircle.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/detail/RockSquare.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/detail/BarrelCacti.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/detail/Lamppost.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/detail/Saguaro.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/detail/Candle.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/detail/Bench.tscn" type="PackedScene" id=15]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SolidTileMap" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( 65530, -1610612736, 0, 65531, -1610612736, 0, 131066, -1610612736, 0, 131067, 0, 0, 196602, -1610612736, 0, 196603, 0, 0, 262138, -1610612736, 0, 262139, -1610612736, 0, 327674, -1610612736, 0, 327675, -1610612736, 0, 393210, -1610612736, 0, 393211, -1610612736, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, -1610612736, 0, 327680, -1610612736, 0, 327681, -1610612736, 0, 327682, -1610612736, 0, 327683, -1610612736, 0, 458746, 1610612736, 0, 458747, 1610612736, 0, 458748, 1610612736, 0, 458749, 1610612736, 0, 458750, 1610612736, 0, 458751, 1610612736, 0, 393216, 1610612736, 0, 393217, 1610612736, 0, 393218, 1610612736, 0, 393219, -1073741824, 0, 458754, -1610612736, 0, 458755, -1073741824, 0, 524290, 1610612736, 0, 524291, 1610612736, 0 )
+detail = 3
+bg_palette = 1
+
+[node name="SpikeMap" parent="." instance=ExtResource( 6 )]
+tile_data = PoolIntArray( 65532, -1610612736, 0, 131068, -1610612736, 0, 327679, 0, 0, 262144, 0, 0, 524282, 1610612736, 0, 589826, 1610612736, 0, 589827, 1610612736, 0 )
+
+[node name="Actors" type="Node2D" parent="."]
+
+[node name="Door" parent="Actors" instance=ExtResource( 3 )]
+position = Vector2( -650, 350 )
+rotation = 4.71239
+dir = 3
+scene_path = "res://src/map/worlds/3B/0_hub.tscn"
+
+[node name="Box" parent="Actors" instance=ExtResource( 1 )]
+position = Vector2( -350, 150 )
+dir = 1
+
+[node name="Box2" parent="Actors" instance=ExtResource( 1 )]
+position = Vector2( -350, 450 )
+
+[node name="Goal" parent="Actors" instance=ExtResource( 4 )]
+position = Vector2( 0, 800 )
+
+[node name="Details" type="Node2D" parent="."]
+
+[node name="Rocks" type="Node2D" parent="Details"]
+modulate = Color( 0.858824, 0.847059, 0.835294, 1 )
+
+[node name="Square" parent="Details/Rocks" instance=ExtResource( 8 )]
+position = Vector2( -500, 100 )
+rotation = -0.785397
+scale = Vector2( 0.179728, 0.179728 )
+
+[node name="Square2" parent="Details/Rocks" instance=ExtResource( 8 )]
+position = Vector2( 300, 800 )
+rotation = -0.785397
+scale = Vector2( 0.179728, 0.179728 )
+
+[node name="Square3" parent="Details/Rocks" instance=ExtResource( 8 )]
+position = Vector2( -500, 350 )
+scale = Vector2( 0.141648, 0.141648 )
+
+[node name="Square4" parent="Details/Rocks" instance=ExtResource( 8 )]
+position = Vector2( 300, 600 )
+scale = Vector2( 0.141648, 0.141648 )
+
+[node name="Rocks2" parent="Details/Rocks" instance=ExtResource( 2 )]
+position = Vector2( -75, 600 )
+rotation = -2.3562
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Circle" parent="Details/Rocks" instance=ExtResource( 7 )]
+position = Vector2( -485, 585 )
+scale = Vector2( 0.231284, 0.231284 )
+
+[node name="Lamppost" parent="Details" instance=ExtResource( 12 )]
+position = Vector2( -400, 500 )
+rotation = 0.785397
+
+[node name="Saguaro" parent="Details" instance=ExtResource( 13 )]
+position = Vector2( -400, 250 )
+rotation = 1.309
+
+[node name="Saguaro2" parent="Details" instance=ExtResource( 13 )]
+position = Vector2( -150, 500 )
+rotation = 0.261799
+scale = Vector2( -0.4, 0.4 )
+
+[node name="Saguaro6" parent="Details" instance=ExtResource( 13 )]
+position = Vector2( 300, 500 )
+rotation = -0.407137
+
+[node name="Saguaro7" parent="Details" instance=ExtResource( 13 )]
+position = Vector2( 400, 650 )
+rotation = 1.35242
+
+[node name="Saguaro8" parent="Details" instance=ExtResource( 13 )]
+position = Vector2( -600, 500 )
+rotation = -1.79769
+
+[node name="Saguaro9" parent="Details" instance=ExtResource( 13 )]
+position = Vector2( -600, 200 )
+rotation = -1.3439
+scale = Vector2( -0.4, 0.4 )
+
+[node name="Saguaro3" parent="Details" instance=ExtResource( 13 )]
+position = Vector2( -350, 700 )
+rotation = 3.40339
+scale = Vector2( -0.4, 0.4 )
+
+[node name="Saguaro4" parent="Details" instance=ExtResource( 13 )]
+position = Vector2( -150, 700 )
+rotation = 2.87979
+
+[node name="Saguaro5" parent="Details" instance=ExtResource( 13 )]
+modulate = Color( 0.9, 0.9, 0.9, 1 )
+position = Vector2( -250, 700 )
+rotation = 3.14205
+scale = Vector2( 0.35, 0.35 )
+z_index = -10
+
+[node name="Candle" parent="Details" instance=ExtResource( 14 )]
+position = Vector2( 100, 700 )
+rotation = -3.14159
+
+[node name="Candle2" parent="Details" instance=ExtResource( 14 )]
+position = Vector2( -500, 0 )
+rotation = -6.28318
+
+[node name="Bench" parent="Details" instance=ExtResource( 15 )]
+position = Vector2( 450, 800 )
+rotation = 1.57079
+
+[node name="BarrelCacti" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( 150, 450 )
+palette = 2
+
+[node name="BarrelCacti2" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( 450, 550 )
+rotation = 1.57079
+palette = 4
+
+[node name="BarrelCacti3" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( 150, 800 )
+rotation = 4.71238
+
+[node name="BarrelCacti4" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -450, 750 )
+rotation = 3.14159
+palette = 3
+
+[node name="BarrelCacti5" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -650, 650 )
+rotation = 4.71238
+palette = 5
+
+[node name="BarrelCacti6" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -650, 50 )
+rotation = 4.71238
+palette = 0

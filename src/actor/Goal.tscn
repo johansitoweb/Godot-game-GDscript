@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/actor/Goal.gd" type="Script" id=1]
+[ext_resource path="res://src/actor/Gem.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 35, 35 )
+
+[node name="Goal" type="Node2D" groups=["goal"]]
+process_priority = -1
+z_index = 90
+z_as_relative = false
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Gem" parent="Sprites" instance=ExtResource( 2 )]
+scale = Vector2( 1.2, 1.2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 2048
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 4 )

@@ -1,0 +1,40 @@
+extends Control
+
+export var slot := 0
+
+onready var new_game := $NewGame
+onready var items := $Items
+
+onready var gem_label := $Items/Goals/Gems/Label
+onready var clocks := $Items/Goals/Clocks
+onready var clock_label := $Items/Goals/Clocks/Label
+onready var time_label := $Items/Time/Label
+
+var is_new := true
+
+func _ready():
+	set_card()
+	
+	Shared.connect("slot_erased", self, "slot_erased")
+
+func set_card():
+	var d = Shared.save_dict
+	
+	if d.has(slot) and d[slot].has("goals") and d[slot].has("time"):
+		is_new = false
+		
+		var gt = d[slot]["goals"].size()
+		gem_label.text = str(gt) if gt > 0 else ""
+		clock_label.text = str(Shared.collect_clocks(d[slot]["goals"]))
+		clocks.visible = clock_label.text != "0"
+		
+		# time
+		time_label.text = Shared.time_string(d[slot]["time"], 0, true)
+	else:
+		is_new = true
+	
+	new_game.visible = is_new
+	items.visible = !is_new
+
+func slot_erased(arg):
+	if arg == slot: set_card()

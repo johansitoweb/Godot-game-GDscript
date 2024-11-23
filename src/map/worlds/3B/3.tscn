@@ -1,0 +1,145 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://src/detail/RockSquare.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/actor/Box.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/actor/door/DoorLittle.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/actor/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/stage/SolidTileMap.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/stage/SpikeMap.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/detail/Rocks.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/detail/RockCircle.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/detail/Saguaro.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/detail/Lamppost.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/detail/BarrelCacti.tscn" type="PackedScene" id=12]
+[ext_resource path="res://src/detail/Candle.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/detail/Bench.tscn" type="PackedScene" id=15]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SolidTileMap" parent="." instance=ExtResource( 5 )]
+tile_data = PoolIntArray( -65540, -1610612736, 0, -65539, -1610612736, 0, -65538, -1610612736, 0, -65537, -1610612736, 0, -131072, -1610612736, 0, -4, 0, 0, -3, -1610612736, 0, -2, 1610612736, 0, -1, 1610612736, 0, -65536, 1610612736, 0, 65532, 0, 0, 65533, -1610612736, 0, 131068, 0, 0, 131069, -1610612736, 0, 196604, 0, 0, 196605, -1610612736, 0, 262140, 0, 0, 262141, -1610612736, 0, 327676, 0, 0, 327677, -1610612736, 0, 393212, -1610612736, 0, 393213, -1610612736, 0, 458748, -1610612736, 0, 458749, -1610612736, 0 )
+detail = 3
+bg_palette = 1
+
+[node name="SpikeMap" parent="." instance=ExtResource( 6 )]
+tile_data = PoolIntArray( -131076, 0, 0, -131071, -1610612736, 0, -65535, -1610612736, 0, 393214, -1610612736, 0, 458750, -1610612736, 0 )
+
+[node name="Actors" type="Node2D" parent="."]
+
+[node name="Door" parent="Actors" instance=ExtResource( 3 )]
+position = Vector2( -450, 250 )
+rotation = 4.71239
+dir = 3
+scene_path = "res://src/map/worlds/3B/0_hub.tscn"
+
+[node name="Box" parent="Actors" instance=ExtResource( 2 )]
+position = Vector2( -150, 150 )
+dir = 1
+
+[node name="Box2" parent="Actors" instance=ExtResource( 2 )]
+position = Vector2( -150, 550 )
+dir = 1
+
+[node name="Goal" parent="Actors" instance=ExtResource( 4 )]
+position = Vector2( -100, -350 )
+
+[node name="Details" type="Node2D" parent="."]
+
+[node name="Rocks" type="Node2D" parent="Details"]
+modulate = Color( 0.858824, 0.847059, 0.835294, 1 )
+
+[node name="Square" parent="Details/Rocks" instance=ExtResource( 1 )]
+position = Vector2( 0, -100 )
+rotation = -0.785397
+scale = Vector2( 0.188522, 0.188522 )
+
+[node name="Square2" parent="Details/Rocks" instance=ExtResource( 1 )]
+position = Vector2( -300, 600 )
+scale = Vector2( 0.165403, 0.165403 )
+
+[node name="Rocks2" parent="Details/Rocks" instance=ExtResource( 7 )]
+position = Vector2( -300, 250 )
+rotation = 3.14159
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Circle" parent="Details/Rocks" instance=ExtResource( 8 )]
+position = Vector2( -285, -85 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Saguaro" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -400, 600 )
+rotation = -1.74533
+scale = Vector2( -0.4, 0.4 )
+
+[node name="Saguaro3" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -400, 450 )
+rotation = -1.39626
+
+[node name="Saguaro8" parent="Details" instance=ExtResource( 10 )]
+modulate = Color( 0.9, 0.9, 0.9, 1 )
+position = Vector2( -400, -50 )
+rotation = -1.39626
+
+[node name="Saguaro4" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -200, 250 )
+rotation = 1.39626
+
+[node name="Saguaro6" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -3.05176e-05, -200 )
+rotation = 0.174533
+
+[node name="Saguaro7" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -200, -200 )
+rotation = -0.174533
+scale = Vector2( -0.4, 0.4 )
+
+[node name="Saguaro5" parent="Details" instance=ExtResource( 10 )]
+position = Vector2( -200, 450 )
+rotation = 1.74533
+scale = Vector2( -0.4, 0.4 )
+
+[node name="Saguaro2" parent="Details" instance=ExtResource( 10 )]
+modulate = Color( 0.9, 0.9, 0.9, 1 )
+position = Vector2( -400, 550 )
+rotation = -1.40282
+scale = Vector2( 0.35, 0.35 )
+z_index = -10
+
+[node name="Lamppost" parent="Details" instance=ExtResource( 11 )]
+position = Vector2( -200, 350 )
+rotation = 1.57079
+
+[node name="Lamppost2" parent="Details" instance=ExtResource( 11 )]
+position = Vector2( -400, 50 )
+rotation = 4.71238
+
+[node name="Bench" parent="Details" instance=ExtResource( 15 )]
+position = Vector2( 0, 50 )
+rotation = -3.14159
+scale = Vector2( -1, 1 )
+
+[node name="Candle" parent="Details" instance=ExtResource( 14 )]
+position = Vector2( -100, -200 )
+
+[node name="Candle2" parent="Details" instance=ExtResource( 14 )]
+position = Vector2( -300, 700 )
+rotation = 3.14159
+
+[node name="BarrelCacti" parent="Details" instance=ExtResource( 12 )]
+position = Vector2( -150, 50 )
+rotation = 2.35619
+palette = 4
+
+[node name="BarrelCacti2" parent="Details" instance=ExtResource( 12 )]
+position = Vector2( -450, -150 )
+rotation = -1.5708
+palette = 0
+
+[node name="BarrelCacti3" parent="Details" instance=ExtResource( 12 )]
+position = Vector2( -450, 150 )
+rotation = -1.5708
+palette = 2
+
+[node name="BarrelCacti4" parent="Details" instance=ExtResource( 12 )]
+position = Vector2( -450, 350 )
+rotation = -1.5708
